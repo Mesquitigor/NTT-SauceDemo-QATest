@@ -1,0 +1,2497 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.9.1 on win32)" generated="20231210 22:27:09.006" rpa="false" schemaversion="4">
+<suite id="s1" name="Tests &amp; Testtemplate Login">
+<suite id="s1-s1" name="Tests" source="C:\Users\User\Documents\QA\desafio_python\tests.robot">
+<kw name="Set Output Directory" library="base" type="SETUP">
+<kw name="Get Current Date" library="DateTime">
+<var>${current_date}</var>
+<arg>result_format=%Y%m%d_%H%M%S</arg>
+<doc>Returns current local or UTC time with an optional increment.</doc>
+<msg timestamp="20231210 22:27:09.298" level="INFO">${current_date} = 20231210_222709</msg>
+<status status="PASS" starttime="20231210 22:27:09.298" endtime="20231210 22:27:09.298"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${path}</arg>
+<arg>${OUTPUT_DIR}/${current_date}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20231210 22:27:09.300" level="INFO">${path} = C:/Users/User/Documents/QA/desafio_python/results/20231210_222709</msg>
+<status status="PASS" starttime="20231210 22:27:09.298" endtime="20231210 22:27:09.300"/>
+</kw>
+<status status="PASS" starttime="20231210 22:27:09.297" endtime="20231210 22:27:09.300"/>
+</kw>
+<test id="s1-s1-t1" name="TC-01 - Validar os valores no carrinho de um produto qualquer" line="9">
+<kw name="Conexão com Sauce Demo" library="base" type="SETUP">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20231210 22:27:09.302" level="INFO">Opening browser 'Firefox' to base url 'https://www.saucedemo.com/'.</msg>
+<status status="PASS" starttime="20231210 22:27:09.302" endtime="20231210 22:27:18.110"/>
+</kw>
+<status status="PASS" starttime="20231210 22:27:09.301" endtime="20231210 22:27:18.110"/>
+</kw>
+<kw name="Dado que eu faça o login na plataforma Sauce Demo" library="steps">
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id:user-name</arg>
+<arg>${correct_user}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231210 22:27:18.112" level="INFO">Typing text 'standard_user' into text field 'id:user-name'.</msg>
+<status status="PASS" starttime="20231210 22:27:18.111" endtime="20231210 22:27:18.240"/>
+</kw>
+<kw name="Input Password" library="SeleniumLibrary">
+<arg>id:password</arg>
+<arg>${password}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<msg timestamp="20231210 22:27:18.240" level="INFO">Typing password into text field 'id:password'.</msg>
+<msg timestamp="20231210 22:27:18.247" level="INFO">Temporally setting log level to: NONE</msg>
+<msg timestamp="20231210 22:27:18.264" level="INFO">Log level changed from NONE to INFO.</msg>
+<status status="PASS" starttime="20231210 22:27:18.240" endtime="20231210 22:27:18.264"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>name:login-button</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20231210 22:27:18.264" level="INFO">Clicking button 'name:login-button'.</msg>
+<status status="PASS" starttime="20231210 22:27:18.264" endtime="20231210 22:27:18.570"/>
+</kw>
+<status status="PASS" starttime="20231210 22:27:18.111" endtime="20231210 22:27:18.570"/>
+</kw>
+<kw name="Quando eu adicionar um produto no carrinho" library="steps">
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<arg>text=Products</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" starttime="20231210 22:27:18.574" endtime="20231210 22:27:18.595"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>${id_clicked_element}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20231210 22:27:18.596" level="INFO">Clicking button 'add-to-cart-sauce-labs-backpack'.</msg>
+<status status="PASS" starttime="20231210 22:27:18.595" endtime="20231210 22:27:18.835"/>
+</kw>
+<kw name="Element Should Be Visible" library="SeleniumLibrary">
+<arg>class:shopping_cart_badge</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<msg timestamp="20231210 22:27:18.864" level="INFO">Element 'class:shopping_cart_badge' is displayed.</msg>
+<status status="PASS" starttime="20231210 22:27:18.835" endtime="20231210 22:27:18.864"/>
+</kw>
+<status status="PASS" starttime="20231210 22:27:18.573" endtime="20231210 22:27:18.864"/>
+</kw>
+<kw name="E eu entrar na página do carrinho" library="steps">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id:shopping_cart_container</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20231210 22:27:18.867" level="INFO">Clicking element 'id:shopping_cart_container'.</msg>
+<status status="PASS" starttime="20231210 22:27:18.866" endtime="20231210 22:27:19.114"/>
+</kw>
+<status status="PASS" starttime="20231210 22:27:18.865" endtime="20231210 22:27:19.114"/>
+</kw>
+<kw name="Então devo ter todos os valores corretamente" library="steps">
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<arg>text=Your Cart</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" starttime="20231210 22:27:19.115" endtime="20231210 22:27:19.118"/>
+</kw>
+<kw name="Page Should Contain" library="SeleniumLibrary">
+<arg>text=${text_clicked_element}</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<msg timestamp="20231210 22:27:19.123" level="INFO">Current page contains text 'carry.allTheThings() with the sleek, streamlined Sly Pack that melds uncompromising style with unequaled laptop and tablet protection.'.</msg>
+<status status="PASS" starttime="20231210 22:27:19.118" endtime="20231210 22:27:19.123"/>
+</kw>
+<kw name="Page Should Contain" library="SeleniumLibrary">
+<arg>text=${name_item}</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<msg timestamp="20231210 22:27:19.129" level="INFO">Current page contains text 'Sauce Labs Backpack'.</msg>
+<status status="PASS" starttime="20231210 22:27:19.124" endtime="20231210 22:27:19.129"/>
+</kw>
+<kw name="Page Should Contain" library="SeleniumLibrary">
+<arg>text=${price_item}</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<msg timestamp="20231210 22:27:19.139" level="INFO">Current page contains text '$29.99'.</msg>
+<status status="PASS" starttime="20231210 22:27:19.129" endtime="20231210 22:27:19.139"/>
+</kw>
+<kw name="Page Should Contain Element" library="SeleniumLibrary">
+<arg>id:remove-sauce-labs-backpack</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<msg timestamp="20231210 22:27:19.143" level="INFO">Current page contains element 'id:remove-sauce-labs-backpack'.</msg>
+<status status="PASS" starttime="20231210 22:27:19.139" endtime="20231210 22:27:19.143"/>
+</kw>
+<kw name="Get Current Date" library="DateTime">
+<var>${current_date}</var>
+<arg>result_format=%Y%m%d_%H%M%S</arg>
+<doc>Returns current local or UTC time with an optional increment.</doc>
+<msg timestamp="20231210 22:27:19.144" level="INFO">${current_date} = 20231210_222719</msg>
+<status status="PASS" starttime="20231210 22:27:19.143" endtime="20231210 22:27:19.144"/>
+</kw>
+<kw name="Screen capture" library="base">
+<arg>TC1-carrinho_${current_date}.png</arg>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<var>${screenshot}</var>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20231210 22:27:19.219" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-1.png"&gt;&lt;img src="selenium-screenshot-1.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg timestamp="20231210 22:27:19.219" level="INFO">${screenshot} = C:\Users\User\Documents\QA\desafio_python\results\selenium-screenshot-1.png</msg>
+<status status="PASS" starttime="20231210 22:27:19.144" endtime="20231210 22:27:19.219"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${screenshot}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20231210 22:27:19.220" level="INFO">${screenshot} = C:\Users\User\Documents\QA\desafio_python\results\selenium-screenshot-1.png</msg>
+<status status="PASS" starttime="20231210 22:27:19.219" endtime="20231210 22:27:19.220"/>
+</kw>
+<kw name="Copy File" library="OperatingSystem">
+<arg>${screenshot}</arg>
+<arg>results/${nome_do_arquivo}</arg>
+<doc>Copies the source file into the destination.</doc>
+<msg timestamp="20231210 22:27:19.228" level="INFO" html="true">Copied file from '&lt;a href="file://C:\Users\User\Documents\QA\desafio_python\results\selenium-screenshot-1.png"&gt;C:\Users\User\Documents\QA\desafio_python\results\selenium-screenshot-1.png&lt;/a&gt;' to '&lt;a href="file://C:\Users\User\Documents\QA\desafio_python\results\TC1-carrinho_20231210_222719.png"&gt;C:\Users\User\Documents\QA\desafio_python\results\TC1-carrinho_20231210_222719.png&lt;/a&gt;'.</msg>
+<status status="PASS" starttime="20231210 22:27:19.220" endtime="20231210 22:27:19.228"/>
+</kw>
+<status status="PASS" starttime="20231210 22:27:19.144" endtime="20231210 22:27:19.228"/>
+</kw>
+<status status="PASS" starttime="20231210 22:27:19.115" endtime="20231210 22:27:19.228"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20231210 22:27:19.229" endtime="20231210 22:27:22.344"/>
+</kw>
+<status status="PASS" starttime="20231210 22:27:09.300" endtime="20231210 22:27:22.345"/>
+</test>
+<test id="s1-s1-t2" name="TC-02 - Validar valor total de uma compra" line="15">
+<kw name="Conexão com Sauce Demo" library="base" type="SETUP">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20231210 22:27:22.348" level="INFO">Opening browser 'Firefox' to base url 'https://www.saucedemo.com/'.</msg>
+<status status="PASS" starttime="20231210 22:27:22.347" endtime="20231210 22:27:29.601"/>
+</kw>
+<status status="PASS" starttime="20231210 22:27:22.347" endtime="20231210 22:27:29.601"/>
+</kw>
+<kw name="Dado que eu faça o login na plataforma Sauce Demo" library="steps">
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id:user-name</arg>
+<arg>${correct_user}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231210 22:27:29.604" level="INFO">Typing text 'standard_user' into text field 'id:user-name'.</msg>
+<status status="PASS" starttime="20231210 22:27:29.603" endtime="20231210 22:27:29.888"/>
+</kw>
+<kw name="Input Password" library="SeleniumLibrary">
+<arg>id:password</arg>
+<arg>${password}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<msg timestamp="20231210 22:27:29.889" level="INFO">Typing password into text field 'id:password'.</msg>
+<msg timestamp="20231210 22:27:29.924" level="INFO">Temporally setting log level to: NONE</msg>
+<msg timestamp="20231210 22:27:29.956" level="INFO">Log level changed from NONE to INFO.</msg>
+<status status="PASS" starttime="20231210 22:27:29.889" endtime="20231210 22:27:29.956"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>name:login-button</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20231210 22:27:29.957" level="INFO">Clicking button 'name:login-button'.</msg>
+<status status="PASS" starttime="20231210 22:27:29.957" endtime="20231210 22:27:30.253"/>
+</kw>
+<status status="PASS" starttime="20231210 22:27:29.602" endtime="20231210 22:27:30.253"/>
+</kw>
+<kw name="Quando eu adicionar alguns produtos no carrinho" library="steps">
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<arg>text=Products</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" starttime="20231210 22:27:30.254" endtime="20231210 22:27:30.262"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>${id_clicked_element}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20231210 22:27:30.263" level="INFO">Clicking button 'add-to-cart-sauce-labs-backpack'.</msg>
+<status status="PASS" starttime="20231210 22:27:30.262" endtime="20231210 22:27:30.497"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>${id_clicked_element2}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20231210 22:27:30.498" level="INFO">Clicking button 'add-to-cart-sauce-labs-bike-light'.</msg>
+<status status="PASS" starttime="20231210 22:27:30.497" endtime="20231210 22:27:30.733"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>${id_clicked_element3}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20231210 22:27:30.734" level="INFO">Clicking button 'add-to-cart-sauce-labs-onesie'.</msg>
+<status status="PASS" starttime="20231210 22:27:30.733" endtime="20231210 22:27:30.963"/>
+</kw>
+<kw name="Element Should Be Visible" library="SeleniumLibrary">
+<arg>class:shopping_cart_badge</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<msg timestamp="20231210 22:27:30.980" level="INFO">Element 'class:shopping_cart_badge' is displayed.</msg>
+<status status="PASS" starttime="20231210 22:27:30.963" endtime="20231210 22:27:30.980"/>
+</kw>
+<status status="PASS" starttime="20231210 22:27:30.254" endtime="20231210 22:27:30.980"/>
+</kw>
+<kw name="E eu entrar na página do carrinho" library="steps">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id:shopping_cart_container</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20231210 22:27:30.982" level="INFO">Clicking element 'id:shopping_cart_container'.</msg>
+<status status="PASS" starttime="20231210 22:27:30.981" endtime="20231210 22:27:31.218"/>
+</kw>
+<status status="PASS" starttime="20231210 22:27:30.981" endtime="20231210 22:27:31.218"/>
+</kw>
+<kw name="E eu entrar na página de checkout" library="steps">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id:checkout</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20231210 22:27:31.219" level="INFO">Clicking element 'id:checkout'.</msg>
+<status status="PASS" starttime="20231210 22:27:31.219" endtime="20231210 22:27:31.449"/>
+</kw>
+<status status="PASS" starttime="20231210 22:27:31.218" endtime="20231210 22:27:31.449"/>
+</kw>
+<kw name="E inserir as credenciais do comprador" library="steps">
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id:first-name</arg>
+<arg>Test_FirstName</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231210 22:27:31.450" level="INFO">Typing text 'Test_FirstName' into text field 'id:first-name'.</msg>
+<status status="PASS" starttime="20231210 22:27:31.450" endtime="20231210 22:27:31.505"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id:last-name</arg>
+<arg>Test_LastName</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231210 22:27:31.505" level="INFO">Typing text 'Test_LastName' into text field 'id:last-name'.</msg>
+<status status="PASS" starttime="20231210 22:27:31.505" endtime="20231210 22:27:31.538"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id:postal-code</arg>
+<arg>Test_PostalCode</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231210 22:27:31.539" level="INFO">Typing text 'Test_PostalCode' into text field 'id:postal-code'.</msg>
+<status status="PASS" starttime="20231210 22:27:31.538" endtime="20231210 22:27:31.571"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id:continue</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20231210 22:27:31.572" level="INFO">Clicking element 'id:continue'.</msg>
+<status status="PASS" starttime="20231210 22:27:31.571" endtime="20231210 22:27:31.801"/>
+</kw>
+<status status="PASS" starttime="20231210 22:27:31.449" endtime="20231210 22:27:31.801"/>
+</kw>
+<kw name="Então devo confirmar as informações da compra" library="steps">
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<arg>text=Checkout: Overview</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" starttime="20231210 22:27:31.802" endtime="20231210 22:27:31.806"/>
+</kw>
+<kw name="Page Should Contain" library="SeleniumLibrary">
+<arg>text=${text_clicked_element}</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<msg timestamp="20231210 22:27:31.811" level="INFO">Current page contains text 'carry.allTheThings() with the sleek, streamlined Sly Pack that melds uncompromising style with unequaled laptop and tablet protection.'.</msg>
+<status status="PASS" starttime="20231210 22:27:31.806" endtime="20231210 22:27:31.811"/>
+</kw>
+<kw name="Page Should Contain" library="SeleniumLibrary">
+<arg>text=${text_clicked_element2}</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<msg timestamp="20231210 22:27:31.819" level="INFO">Current page contains text 'A red light isn't the desired state in testing but it sure helps when riding your bike at night. Water-resistant with 3 lighting modes, 1 AAA battery included.'.</msg>
+<status status="PASS" starttime="20231210 22:27:31.812" endtime="20231210 22:27:31.819"/>
+</kw>
+<kw name="Page Should Contain" library="SeleniumLibrary">
+<arg>text=${text_clicked_element3}</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<msg timestamp="20231210 22:27:31.827" level="INFO">Current page contains text 'Rib snap infant onesie for the junior automation engineer in development. Reinforced 3-snap bottom closure, two-needle hemmed sleeved and bottom won't unravel.'.</msg>
+<status status="PASS" starttime="20231210 22:27:31.819" endtime="20231210 22:27:31.827"/>
+</kw>
+<kw name="Page Should Contain" library="SeleniumLibrary">
+<arg>text=${name_item}</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<msg timestamp="20231210 22:27:31.832" level="INFO">Current page contains text 'Sauce Labs Backpack'.</msg>
+<status status="PASS" starttime="20231210 22:27:31.827" endtime="20231210 22:27:31.832"/>
+</kw>
+<kw name="Page Should Contain" library="SeleniumLibrary">
+<arg>text=${name_item2}</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<msg timestamp="20231210 22:27:31.838" level="INFO">Current page contains text 'Sauce Labs Bike Light'.</msg>
+<status status="PASS" starttime="20231210 22:27:31.833" endtime="20231210 22:27:31.838"/>
+</kw>
+<kw name="Page Should Contain" library="SeleniumLibrary">
+<arg>text=${name_item3}</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<msg timestamp="20231210 22:27:31.846" level="INFO">Current page contains text 'Sauce Labs Onesie'.</msg>
+<status status="PASS" starttime="20231210 22:27:31.839" endtime="20231210 22:27:31.846"/>
+</kw>
+<kw name="Page Should Contain" library="SeleniumLibrary">
+<arg>text=${price_item}</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<msg timestamp="20231210 22:27:31.853" level="INFO">Current page contains text '$29.99'.</msg>
+<status status="PASS" starttime="20231210 22:27:31.846" endtime="20231210 22:27:31.853"/>
+</kw>
+<kw name="Page Should Contain Element" library="SeleniumLibrary">
+<arg>id:cancel</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<msg timestamp="20231210 22:27:31.856" level="INFO">Current page contains element 'id:cancel'.</msg>
+<status status="PASS" starttime="20231210 22:27:31.853" endtime="20231210 22:27:31.856"/>
+</kw>
+<kw name="Page Should Contain Element" library="SeleniumLibrary">
+<arg>id:finish</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<msg timestamp="20231210 22:27:31.861" level="INFO">Current page contains element 'id:finish'.</msg>
+<status status="PASS" starttime="20231210 22:27:31.856" endtime="20231210 22:27:31.861"/>
+</kw>
+<kw name="Page Should Contain" library="SeleniumLibrary">
+<arg>$51.81</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<msg timestamp="20231210 22:27:31.867" level="INFO">Current page contains text '$51.81'.</msg>
+<status status="PASS" starttime="20231210 22:27:31.861" endtime="20231210 22:27:31.867"/>
+</kw>
+<kw name="Get Current Date" library="DateTime">
+<var>${current_date}</var>
+<arg>result_format=%Y%m%d_%H%M%S</arg>
+<doc>Returns current local or UTC time with an optional increment.</doc>
+<msg timestamp="20231210 22:27:31.867" level="INFO">${current_date} = 20231210_222731</msg>
+<status status="PASS" starttime="20231210 22:27:31.867" endtime="20231210 22:27:31.868"/>
+</kw>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<arg>window.scrollTo(0, document.body.scrollHeight);</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<msg timestamp="20231210 22:27:31.868" level="INFO">Executing JavaScript:
+window.scrollTo(0, document.body.scrollHeight);
+Without any arguments.</msg>
+<status status="PASS" starttime="20231210 22:27:31.868" endtime="20231210 22:27:31.873"/>
+</kw>
+<kw name="Screen capture" library="base">
+<arg>TC2-valortotal_${current_date}.png</arg>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<var>${screenshot}</var>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20231210 22:27:31.929" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-2.png"&gt;&lt;img src="selenium-screenshot-2.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg timestamp="20231210 22:27:31.930" level="INFO">${screenshot} = C:\Users\User\Documents\QA\desafio_python\results\selenium-screenshot-2.png</msg>
+<status status="PASS" starttime="20231210 22:27:31.876" endtime="20231210 22:27:31.930"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${screenshot}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20231210 22:27:31.930" level="INFO">${screenshot} = C:\Users\User\Documents\QA\desafio_python\results\selenium-screenshot-2.png</msg>
+<status status="PASS" starttime="20231210 22:27:31.930" endtime="20231210 22:27:31.930"/>
+</kw>
+<kw name="Copy File" library="OperatingSystem">
+<arg>${screenshot}</arg>
+<arg>results/${nome_do_arquivo}</arg>
+<doc>Copies the source file into the destination.</doc>
+<msg timestamp="20231210 22:27:31.938" level="INFO" html="true">Copied file from '&lt;a href="file://C:\Users\User\Documents\QA\desafio_python\results\selenium-screenshot-2.png"&gt;C:\Users\User\Documents\QA\desafio_python\results\selenium-screenshot-2.png&lt;/a&gt;' to '&lt;a href="file://C:\Users\User\Documents\QA\desafio_python\results\TC2-valortotal_20231210_222731.png"&gt;C:\Users\User\Documents\QA\desafio_python\results\TC2-valortotal_20231210_222731.png&lt;/a&gt;'.</msg>
+<status status="PASS" starttime="20231210 22:27:31.930" endtime="20231210 22:27:31.938"/>
+</kw>
+<status status="PASS" starttime="20231210 22:27:31.873" endtime="20231210 22:27:31.938"/>
+</kw>
+<status status="PASS" starttime="20231210 22:27:31.802" endtime="20231210 22:27:31.938"/>
+</kw>
+<kw name="E concluir a compra" library="steps">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id:finish</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20231210 22:27:31.939" level="INFO">Clicking element 'id:finish'.</msg>
+<status status="PASS" starttime="20231210 22:27:31.939" endtime="20231210 22:27:32.163"/>
+</kw>
+<status status="PASS" starttime="20231210 22:27:31.939" endtime="20231210 22:27:32.163"/>
+</kw>
+<kw name="E fazer o logout da plataforma" library="steps">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id:react-burger-menu-btn</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20231210 22:27:32.164" level="INFO">Clicking element 'id:react-burger-menu-btn'.</msg>
+<status status="PASS" starttime="20231210 22:27:32.164" endtime="20231210 22:27:32.388"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>id:logout_sidebar_link</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20231210 22:27:32.388" endtime="20231210 22:27:32.403"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id:logout_sidebar_link</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20231210 22:27:32.403" level="INFO">Clicking element 'id:logout_sidebar_link'.</msg>
+<status status="PASS" starttime="20231210 22:27:32.403" endtime="20231210 22:27:32.633"/>
+</kw>
+<status status="PASS" starttime="20231210 22:27:32.164" endtime="20231210 22:27:32.633"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20231210 22:27:32.635" endtime="20231210 22:27:35.652"/>
+</kw>
+<status status="PASS" starttime="20231210 22:27:22.346" endtime="20231210 22:27:35.652"/>
+</test>
+<doc>Esse arquivo contém os cenários de teste referente à Prova Técnica NTT Data</doc>
+<status status="PASS" starttime="20231210 22:27:09.034" endtime="20231210 22:27:35.654"/>
+</suite>
+<suite id="s1-s2" name="Testtemplate Login" source="C:\Users\User\Documents\QA\desafio_python\testtemplate_login.robot">
+<test id="s1-s2-t1" name="Login com standard_user" line="9">
+<kw name="Conexão com Sauce Demo" library="base" type="SETUP">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20231210 22:27:35.675" level="INFO">Opening browser 'Firefox' to base url 'https://www.saucedemo.com/'.</msg>
+<status status="PASS" starttime="20231210 22:27:35.674" endtime="20231210 22:27:43.871"/>
+</kw>
+<status status="PASS" starttime="20231210 22:27:35.673" endtime="20231210 22:27:43.871"/>
+</kw>
+<kw name="Cenários de login com falha">
+<arg>standard_user</arg>
+<arg>secret_sauce</arg>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id=user-name</arg>
+<arg>${login}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231210 22:27:43.873" level="INFO">Typing text 'standard_user' into text field 'id=user-name'.</msg>
+<status status="PASS" starttime="20231210 22:27:43.872" endtime="20231210 22:27:44.003"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id=password</arg>
+<arg>${password}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231210 22:27:44.004" level="INFO">Typing text 'secret_sauce' into text field 'id=password'.</msg>
+<status status="PASS" starttime="20231210 22:27:44.004" endtime="20231210 22:27:44.072"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${comparacao1}</var>
+<arg>'${login}' == 'standard_user'</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20231210 22:27:44.073" level="INFO">${comparacao1} = True</msg>
+<status status="PASS" starttime="20231210 22:27:44.072" endtime="20231210 22:27:44.073"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${comparacao2}</var>
+<arg>'${login}' == 'locked_out_user'</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20231210 22:27:44.074" level="INFO">${comparacao2} = False</msg>
+<status status="PASS" starttime="20231210 22:27:44.073" endtime="20231210 22:27:44.074"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${comparacao3}</var>
+<arg>'${login}' == 'problem_user'</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20231210 22:27:44.074" level="INFO">${comparacao3} = False</msg>
+<status status="PASS" starttime="20231210 22:27:44.074" endtime="20231210 22:27:44.074"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${comparacao4}</var>
+<arg>'${login}' == 'performance_glitch_user'</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20231210 22:27:44.075" level="INFO">${comparacao4} = False</msg>
+<status status="PASS" starttime="20231210 22:27:44.075" endtime="20231210 22:27:44.076"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${comparacao5}</var>
+<arg>'${login}' == 'error_user'</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20231210 22:27:44.076" level="INFO">${comparacao5} = False</msg>
+<status status="PASS" starttime="20231210 22:27:44.076" endtime="20231210 22:27:44.076"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${comparacao6}</var>
+<arg>'${login}' == 'visual_user'</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20231210 22:27:44.077" level="INFO">${comparacao6} = False</msg>
+<status status="PASS" starttime="20231210 22:27:44.076" endtime="20231210 22:27:44.077"/>
+</kw>
+<if>
+<branch type="IF" condition="${comparacao1} == ${True}">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id=login-button</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20231210 22:27:44.078" level="INFO">Clicking element 'id=login-button'.</msg>
+<status status="PASS" starttime="20231210 22:27:44.077" endtime="20231210 22:27:44.415"/>
+</kw>
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<arg>Products</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" starttime="20231210 22:27:44.415" endtime="20231210 22:27:44.421"/>
+</kw>
+<kw name="Page Should Contain" library="SeleniumLibrary">
+<arg>Products</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<msg timestamp="20231210 22:27:44.430" level="INFO">Current page contains text 'Products'.</msg>
+<status status="PASS" starttime="20231210 22:27:44.421" endtime="20231210 22:27:44.430"/>
+</kw>
+<kw name="Get Horizontal Position" library="SeleniumLibrary">
+<var>${x_cart}</var>
+<arg>locator=//*[@id="shopping_cart_container"]/a</arg>
+<doc>Returns the horizontal position of the element identified by ``locator``.</doc>
+<msg timestamp="20231210 22:27:44.444" level="INFO">${x_cart} = 1203</msg>
+<status status="PASS" starttime="20231210 22:27:44.430" endtime="20231210 22:27:44.444"/>
+</kw>
+<kw name="Get Vertical Position" library="SeleniumLibrary">
+<var>${y_cart}</var>
+<arg>locator=//*[@id="shopping_cart_container"]/a</arg>
+<doc>Returns the vertical position of the element identified by ``locator``.</doc>
+<msg timestamp="20231210 22:27:44.464" level="INFO">${y_cart} = 10</msg>
+<status status="PASS" starttime="20231210 22:27:44.444" endtime="20231210 22:27:44.465"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>locator=//*[@id="shopping_cart_container"]/a</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20231210 22:27:44.467" level="INFO">Clicking element '//*[@id="shopping_cart_container"]/a'.</msg>
+<status status="PASS" starttime="20231210 22:27:44.465" endtime="20231210 22:27:44.709"/>
+</kw>
+<kw name="Get Horizontal Position" library="SeleniumLibrary">
+<var>${x_checkout}</var>
+<arg>id=checkout</arg>
+<doc>Returns the horizontal position of the element identified by ``locator``.</doc>
+<msg timestamp="20231210 22:27:44.719" level="INFO">${x_checkout} = 1045</msg>
+<status status="PASS" starttime="20231210 22:27:44.709" endtime="20231210 22:27:44.719"/>
+</kw>
+<kw name="Get Vertical Position" library="SeleniumLibrary">
+<var>${y_checkout}</var>
+<arg>id=checkout</arg>
+<doc>Returns the vertical position of the element identified by ``locator``.</doc>
+<msg timestamp="20231210 22:27:44.727" level="INFO">${y_checkout} = 217</msg>
+<status status="PASS" starttime="20231210 22:27:44.719" endtime="20231210 22:27:44.727"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${x_cart}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<msg timestamp="20231210 22:27:44.727" level="INFO">${x_cart} = 1203</msg>
+<status status="PASS" starttime="20231210 22:27:44.727" endtime="20231210 22:27:44.728"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${y_cart}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<msg timestamp="20231210 22:27:44.728" level="INFO">${y_cart} = 10</msg>
+<status status="PASS" starttime="20231210 22:27:44.728" endtime="20231210 22:27:44.728"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${x_checkout}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<msg timestamp="20231210 22:27:44.729" level="INFO">${x_checkout} = 1045</msg>
+<status status="PASS" starttime="20231210 22:27:44.728" endtime="20231210 22:27:44.729"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${y_checkout}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<msg timestamp="20231210 22:27:44.729" level="INFO">${y_checkout} = 217</msg>
+<status status="PASS" starttime="20231210 22:27:44.729" endtime="20231210 22:27:44.729"/>
+</kw>
+<status status="PASS" starttime="20231210 22:27:44.077" endtime="20231210 22:27:44.729"/>
+</branch>
+<branch type="ELSE IF" condition="${comparacao2} == ${True}">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id=login-button</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:27:44.729" endtime="20231210 22:27:44.729"/>
+</kw>
+<kw name="Page Should Contain" library="SeleniumLibrary">
+<arg>Epic sadface: Sorry, this user has been locked out.</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="NOT RUN" starttime="20231210 22:27:44.730" endtime="20231210 22:27:44.730"/>
+</kw>
+<status status="NOT RUN" starttime="20231210 22:27:44.729" endtime="20231210 22:27:44.730"/>
+</branch>
+<branch type="ELSE IF" condition="${comparacao3} == ${True}">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id=login-button</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:27:44.730" endtime="20231210 22:27:44.730"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id=add-to-cart-sauce-labs-backpack</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:27:44.730" endtime="20231210 22:27:44.730"/>
+</kw>
+<kw name="Page Should Contain Element" library="SeleniumLibrary">
+<arg>id=remove-sauce-labs-backpack</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<status status="NOT RUN" starttime="20231210 22:27:44.730" endtime="20231210 22:27:44.730"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id=remove-sauce-labs-backpack</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:27:44.730" endtime="20231210 22:27:44.730"/>
+</kw>
+<kw name="Page Should Contain Element" library="SeleniumLibrary">
+<arg>id=add-to-cart-sauce-labs-backpack</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<status status="NOT RUN" starttime="20231210 22:27:44.730" endtime="20231210 22:27:44.730"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id=add-to-cart-sauce-labs-bolt-t-shirt</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:27:44.731" endtime="20231210 22:27:44.731"/>
+</kw>
+<kw name="Page Should Contain Element" library="SeleniumLibrary">
+<arg>id=remove-sauce-labs-bolt-t-shirt</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<status status="NOT RUN" starttime="20231210 22:27:44.731" endtime="20231210 22:27:44.731"/>
+</kw>
+<status status="NOT RUN" starttime="20231210 22:27:44.730" endtime="20231210 22:27:44.731"/>
+</branch>
+<branch type="ELSE IF" condition="${comparacao4} == ${True}">
+<kw name="Get Time" library="BuiltIn">
+<var>${now}</var>
+<arg>format=yearmonthdayhourminsec</arg>
+<doc>Returns the given time in the requested format.</doc>
+<status status="NOT RUN" starttime="20231210 22:27:44.731" endtime="20231210 22:27:44.731"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${now}</var>
+<arg>${now}[0]${now}[1]${now}[2]${now}[3]${now}[4]${now}[5]</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="NOT RUN" starttime="20231210 22:27:44.731" endtime="20231210 22:27:44.731"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id=login-button</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:27:44.732" endtime="20231210 22:27:44.732"/>
+</kw>
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<arg>Products</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="NOT RUN" starttime="20231210 22:27:44.732" endtime="20231210 22:27:44.732"/>
+</kw>
+<kw name="Get Time" library="BuiltIn">
+<var>${after}</var>
+<arg>format=yearmonthdayhourminsec</arg>
+<doc>Returns the given time in the requested format.</doc>
+<status status="NOT RUN" starttime="20231210 22:27:44.732" endtime="20231210 22:27:44.732"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${after}</var>
+<arg>${after}[0]${after}[1]${after}[2]${after}[3]${after}[4]${after}[5]</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="NOT RUN" starttime="20231210 22:27:44.732" endtime="20231210 22:27:44.732"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${duration}</var>
+<arg>${after} - ${now}</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="NOT RUN" starttime="20231210 22:27:44.732" endtime="20231210 22:27:44.732"/>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<arg>${duration} &lt; 3</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="NOT RUN" starttime="20231210 22:27:44.732" endtime="20231210 22:27:44.733"/>
+</kw>
+<status status="NOT RUN" starttime="20231210 22:27:44.731" endtime="20231210 22:27:44.733"/>
+</branch>
+<branch type="ELSE IF" condition="${comparacao5} == ${True}">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id=login-button</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:27:44.733" endtime="20231210 22:27:44.733"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id=add-to-cart-sauce-labs-backpack</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:27:44.733" endtime="20231210 22:27:44.733"/>
+</kw>
+<kw name="Page Should Contain Element" library="SeleniumLibrary">
+<arg>id=remove-sauce-labs-backpack</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<status status="NOT RUN" starttime="20231210 22:27:44.733" endtime="20231210 22:27:44.733"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id=add-to-cart-sauce-labs-bolt-t-shirt</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:27:44.733" endtime="20231210 22:27:44.733"/>
+</kw>
+<kw name="Page Should Contain Element" library="SeleniumLibrary">
+<arg>id=remove-sauce-labs-bolt-t-shirt</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<status status="NOT RUN" starttime="20231210 22:27:44.733" endtime="20231210 22:27:44.733"/>
+</kw>
+<status status="NOT RUN" starttime="20231210 22:27:44.733" endtime="20231210 22:27:44.733"/>
+</branch>
+<branch type="ELSE IF" condition="${comparacao6} == ${True}">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id=login-button</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:27:44.733" endtime="20231210 22:27:44.734"/>
+</kw>
+<kw name="Get Horizontal Position" library="SeleniumLibrary">
+<var>${xx}</var>
+<arg>locator=//*[@id="shopping_cart_container"]/a</arg>
+<doc>Returns the horizontal position of the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:27:44.734" endtime="20231210 22:27:44.734"/>
+</kw>
+<kw name="Get Vertical Position" library="SeleniumLibrary">
+<var>${yy}</var>
+<arg>locator=//*[@id="shopping_cart_container"]/a</arg>
+<doc>Returns the vertical position of the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:27:44.734" endtime="20231210 22:27:44.734"/>
+</kw>
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<arg>${xx}</arg>
+<arg>${x_cart}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="NOT RUN" starttime="20231210 22:27:44.734" endtime="20231210 22:27:44.734"/>
+</kw>
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<arg>${yy}</arg>
+<arg>${y_cart}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="NOT RUN" starttime="20231210 22:27:44.734" endtime="20231210 22:27:44.734"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>locator=//*[@id="shopping_cart_container"]/a</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:27:44.734" endtime="20231210 22:27:44.734"/>
+</kw>
+<kw name="Get Horizontal Position" library="SeleniumLibrary">
+<var>${xxx}</var>
+<arg>id=checkout</arg>
+<doc>Returns the horizontal position of the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:27:44.734" endtime="20231210 22:27:44.734"/>
+</kw>
+<kw name="Get Vertical Position" library="SeleniumLibrary">
+<var>${yyy}</var>
+<arg>id=checkout</arg>
+<doc>Returns the vertical position of the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:27:44.734" endtime="20231210 22:27:44.734"/>
+</kw>
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<arg>${xxx}</arg>
+<arg>${x_checkout}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="NOT RUN" starttime="20231210 22:27:44.735" endtime="20231210 22:27:44.735"/>
+</kw>
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<arg>${yyy}</arg>
+<arg>${y_checkout}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="NOT RUN" starttime="20231210 22:27:44.735" endtime="20231210 22:27:44.735"/>
+</kw>
+<status status="NOT RUN" starttime="20231210 22:27:44.733" endtime="20231210 22:27:44.735"/>
+</branch>
+<status status="PASS" starttime="20231210 22:27:44.077" endtime="20231210 22:27:44.735"/>
+</if>
+<status status="PASS" starttime="20231210 22:27:43.872" endtime="20231210 22:27:44.735"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20231210 22:27:44.736" endtime="20231210 22:27:47.886"/>
+</kw>
+<status status="PASS" starttime="20231210 22:27:35.673" endtime="20231210 22:27:47.887"/>
+</test>
+<test id="s1-s2-t2" name="Login com locked_out_user" line="10">
+<kw name="Conexão com Sauce Demo" library="base" type="SETUP">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20231210 22:27:47.890" level="INFO">Opening browser 'Firefox' to base url 'https://www.saucedemo.com/'.</msg>
+<status status="PASS" starttime="20231210 22:27:47.890" endtime="20231210 22:27:55.345"/>
+</kw>
+<status status="PASS" starttime="20231210 22:27:47.890" endtime="20231210 22:27:55.345"/>
+</kw>
+<kw name="Cenários de login com falha">
+<arg>locked_out_user</arg>
+<arg>secret_sauce</arg>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id=user-name</arg>
+<arg>${login}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231210 22:27:55.347" level="INFO">Typing text 'locked_out_user' into text field 'id=user-name'.</msg>
+<status status="PASS" starttime="20231210 22:27:55.346" endtime="20231210 22:27:55.473"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id=password</arg>
+<arg>${password}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231210 22:27:55.475" level="INFO">Typing text 'secret_sauce' into text field 'id=password'.</msg>
+<status status="PASS" starttime="20231210 22:27:55.473" endtime="20231210 22:27:55.508"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${comparacao1}</var>
+<arg>'${login}' == 'standard_user'</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20231210 22:27:55.508" level="INFO">${comparacao1} = False</msg>
+<status status="PASS" starttime="20231210 22:27:55.508" endtime="20231210 22:27:55.508"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${comparacao2}</var>
+<arg>'${login}' == 'locked_out_user'</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20231210 22:27:55.509" level="INFO">${comparacao2} = True</msg>
+<status status="PASS" starttime="20231210 22:27:55.509" endtime="20231210 22:27:55.509"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${comparacao3}</var>
+<arg>'${login}' == 'problem_user'</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20231210 22:27:55.509" level="INFO">${comparacao3} = False</msg>
+<status status="PASS" starttime="20231210 22:27:55.509" endtime="20231210 22:27:55.509"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${comparacao4}</var>
+<arg>'${login}' == 'performance_glitch_user'</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20231210 22:27:55.510" level="INFO">${comparacao4} = False</msg>
+<status status="PASS" starttime="20231210 22:27:55.509" endtime="20231210 22:27:55.510"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${comparacao5}</var>
+<arg>'${login}' == 'error_user'</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20231210 22:27:55.510" level="INFO">${comparacao5} = False</msg>
+<status status="PASS" starttime="20231210 22:27:55.510" endtime="20231210 22:27:55.510"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${comparacao6}</var>
+<arg>'${login}' == 'visual_user'</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20231210 22:27:55.511" level="INFO">${comparacao6} = False</msg>
+<status status="PASS" starttime="20231210 22:27:55.510" endtime="20231210 22:27:55.511"/>
+</kw>
+<if>
+<branch type="IF" condition="${comparacao1} == ${True}">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id=login-button</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:27:55.511" endtime="20231210 22:27:55.511"/>
+</kw>
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<arg>Products</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="NOT RUN" starttime="20231210 22:27:55.511" endtime="20231210 22:27:55.511"/>
+</kw>
+<kw name="Page Should Contain" library="SeleniumLibrary">
+<arg>Products</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="NOT RUN" starttime="20231210 22:27:55.511" endtime="20231210 22:27:55.511"/>
+</kw>
+<kw name="Get Horizontal Position" library="SeleniumLibrary">
+<var>${x_cart}</var>
+<arg>locator=//*[@id="shopping_cart_container"]/a</arg>
+<doc>Returns the horizontal position of the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:27:55.511" endtime="20231210 22:27:55.511"/>
+</kw>
+<kw name="Get Vertical Position" library="SeleniumLibrary">
+<var>${y_cart}</var>
+<arg>locator=//*[@id="shopping_cart_container"]/a</arg>
+<doc>Returns the vertical position of the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:27:55.511" endtime="20231210 22:27:55.511"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>locator=//*[@id="shopping_cart_container"]/a</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:27:55.512" endtime="20231210 22:27:55.512"/>
+</kw>
+<kw name="Get Horizontal Position" library="SeleniumLibrary">
+<var>${x_checkout}</var>
+<arg>id=checkout</arg>
+<doc>Returns the horizontal position of the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:27:55.512" endtime="20231210 22:27:55.512"/>
+</kw>
+<kw name="Get Vertical Position" library="SeleniumLibrary">
+<var>${y_checkout}</var>
+<arg>id=checkout</arg>
+<doc>Returns the vertical position of the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:27:55.512" endtime="20231210 22:27:55.512"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${x_cart}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="NOT RUN" starttime="20231210 22:27:55.512" endtime="20231210 22:27:55.512"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${y_cart}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="NOT RUN" starttime="20231210 22:27:55.512" endtime="20231210 22:27:55.512"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${x_checkout}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="NOT RUN" starttime="20231210 22:27:55.512" endtime="20231210 22:27:55.512"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${y_checkout}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="NOT RUN" starttime="20231210 22:27:55.512" endtime="20231210 22:27:55.512"/>
+</kw>
+<status status="NOT RUN" starttime="20231210 22:27:55.511" endtime="20231210 22:27:55.512"/>
+</branch>
+<branch type="ELSE IF" condition="${comparacao2} == ${True}">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id=login-button</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20231210 22:27:55.513" level="INFO">Clicking element 'id=login-button'.</msg>
+<status status="PASS" starttime="20231210 22:27:55.513" endtime="20231210 22:27:55.786"/>
+</kw>
+<kw name="Page Should Contain" library="SeleniumLibrary">
+<arg>Epic sadface: Sorry, this user has been locked out.</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<msg timestamp="20231210 22:27:55.788" level="INFO">Current page contains text 'Epic sadface: Sorry, this user has been locked out.'.</msg>
+<status status="PASS" starttime="20231210 22:27:55.786" endtime="20231210 22:27:55.788"/>
+</kw>
+<status status="PASS" starttime="20231210 22:27:55.513" endtime="20231210 22:27:55.788"/>
+</branch>
+<branch type="ELSE IF" condition="${comparacao3} == ${True}">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id=login-button</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:27:55.788" endtime="20231210 22:27:55.788"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id=add-to-cart-sauce-labs-backpack</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:27:55.788" endtime="20231210 22:27:55.788"/>
+</kw>
+<kw name="Page Should Contain Element" library="SeleniumLibrary">
+<arg>id=remove-sauce-labs-backpack</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<status status="NOT RUN" starttime="20231210 22:27:55.788" endtime="20231210 22:27:55.788"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id=remove-sauce-labs-backpack</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:27:55.788" endtime="20231210 22:27:55.788"/>
+</kw>
+<kw name="Page Should Contain Element" library="SeleniumLibrary">
+<arg>id=add-to-cart-sauce-labs-backpack</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<status status="NOT RUN" starttime="20231210 22:27:55.788" endtime="20231210 22:27:55.788"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id=add-to-cart-sauce-labs-bolt-t-shirt</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:27:55.788" endtime="20231210 22:27:55.788"/>
+</kw>
+<kw name="Page Should Contain Element" library="SeleniumLibrary">
+<arg>id=remove-sauce-labs-bolt-t-shirt</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<status status="NOT RUN" starttime="20231210 22:27:55.788" endtime="20231210 22:27:55.788"/>
+</kw>
+<status status="NOT RUN" starttime="20231210 22:27:55.788" endtime="20231210 22:27:55.788"/>
+</branch>
+<branch type="ELSE IF" condition="${comparacao4} == ${True}">
+<kw name="Get Time" library="BuiltIn">
+<var>${now}</var>
+<arg>format=yearmonthdayhourminsec</arg>
+<doc>Returns the given time in the requested format.</doc>
+<status status="NOT RUN" starttime="20231210 22:27:55.788" endtime="20231210 22:27:55.788"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${now}</var>
+<arg>${now}[0]${now}[1]${now}[2]${now}[3]${now}[4]${now}[5]</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="NOT RUN" starttime="20231210 22:27:55.788" endtime="20231210 22:27:55.788"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id=login-button</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:27:55.788" endtime="20231210 22:27:55.788"/>
+</kw>
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<arg>Products</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="NOT RUN" starttime="20231210 22:27:55.788" endtime="20231210 22:27:55.788"/>
+</kw>
+<kw name="Get Time" library="BuiltIn">
+<var>${after}</var>
+<arg>format=yearmonthdayhourminsec</arg>
+<doc>Returns the given time in the requested format.</doc>
+<status status="NOT RUN" starttime="20231210 22:27:55.788" endtime="20231210 22:27:55.788"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${after}</var>
+<arg>${after}[0]${after}[1]${after}[2]${after}[3]${after}[4]${after}[5]</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="NOT RUN" starttime="20231210 22:27:55.788" endtime="20231210 22:27:55.788"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${duration}</var>
+<arg>${after} - ${now}</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="NOT RUN" starttime="20231210 22:27:55.788" endtime="20231210 22:27:55.788"/>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<arg>${duration} &lt; 3</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="NOT RUN" starttime="20231210 22:27:55.788" endtime="20231210 22:27:55.788"/>
+</kw>
+<status status="NOT RUN" starttime="20231210 22:27:55.788" endtime="20231210 22:27:55.788"/>
+</branch>
+<branch type="ELSE IF" condition="${comparacao5} == ${True}">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id=login-button</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:27:55.788" endtime="20231210 22:27:55.788"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id=add-to-cart-sauce-labs-backpack</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:27:55.788" endtime="20231210 22:27:55.788"/>
+</kw>
+<kw name="Page Should Contain Element" library="SeleniumLibrary">
+<arg>id=remove-sauce-labs-backpack</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<status status="NOT RUN" starttime="20231210 22:27:55.788" endtime="20231210 22:27:55.788"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id=add-to-cart-sauce-labs-bolt-t-shirt</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:27:55.795" endtime="20231210 22:27:55.795"/>
+</kw>
+<kw name="Page Should Contain Element" library="SeleniumLibrary">
+<arg>id=remove-sauce-labs-bolt-t-shirt</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<status status="NOT RUN" starttime="20231210 22:27:55.795" endtime="20231210 22:27:55.795"/>
+</kw>
+<status status="NOT RUN" starttime="20231210 22:27:55.788" endtime="20231210 22:27:55.795"/>
+</branch>
+<branch type="ELSE IF" condition="${comparacao6} == ${True}">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id=login-button</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:27:55.795" endtime="20231210 22:27:55.795"/>
+</kw>
+<kw name="Get Horizontal Position" library="SeleniumLibrary">
+<var>${xx}</var>
+<arg>locator=//*[@id="shopping_cart_container"]/a</arg>
+<doc>Returns the horizontal position of the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:27:55.795" endtime="20231210 22:27:55.795"/>
+</kw>
+<kw name="Get Vertical Position" library="SeleniumLibrary">
+<var>${yy}</var>
+<arg>locator=//*[@id="shopping_cart_container"]/a</arg>
+<doc>Returns the vertical position of the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:27:55.795" endtime="20231210 22:27:55.795"/>
+</kw>
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<arg>${xx}</arg>
+<arg>${x_cart}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="NOT RUN" starttime="20231210 22:27:55.795" endtime="20231210 22:27:55.795"/>
+</kw>
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<arg>${yy}</arg>
+<arg>${y_cart}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="NOT RUN" starttime="20231210 22:27:55.795" endtime="20231210 22:27:55.795"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>locator=//*[@id="shopping_cart_container"]/a</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:27:55.795" endtime="20231210 22:27:55.795"/>
+</kw>
+<kw name="Get Horizontal Position" library="SeleniumLibrary">
+<var>${xxx}</var>
+<arg>id=checkout</arg>
+<doc>Returns the horizontal position of the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:27:55.795" endtime="20231210 22:27:55.795"/>
+</kw>
+<kw name="Get Vertical Position" library="SeleniumLibrary">
+<var>${yyy}</var>
+<arg>id=checkout</arg>
+<doc>Returns the vertical position of the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:27:55.795" endtime="20231210 22:27:55.795"/>
+</kw>
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<arg>${xxx}</arg>
+<arg>${x_checkout}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="NOT RUN" starttime="20231210 22:27:55.795" endtime="20231210 22:27:55.795"/>
+</kw>
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<arg>${yyy}</arg>
+<arg>${y_checkout}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="NOT RUN" starttime="20231210 22:27:55.795" endtime="20231210 22:27:55.795"/>
+</kw>
+<status status="NOT RUN" starttime="20231210 22:27:55.795" endtime="20231210 22:27:55.795"/>
+</branch>
+<status status="PASS" starttime="20231210 22:27:55.511" endtime="20231210 22:27:55.795"/>
+</if>
+<status status="PASS" starttime="20231210 22:27:55.346" endtime="20231210 22:27:55.795"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20231210 22:27:55.795" endtime="20231210 22:27:58.756"/>
+</kw>
+<status status="PASS" starttime="20231210 22:27:47.888" endtime="20231210 22:27:58.756"/>
+</test>
+<test id="s1-s2-t3" name="Login com problem_user" line="11">
+<kw name="Conexão com Sauce Demo" library="base" type="SETUP">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20231210 22:27:58.759" level="INFO">Opening browser 'Firefox' to base url 'https://www.saucedemo.com/'.</msg>
+<status status="PASS" starttime="20231210 22:27:58.759" endtime="20231210 22:28:06.083"/>
+</kw>
+<status status="PASS" starttime="20231210 22:27:58.758" endtime="20231210 22:28:06.083"/>
+</kw>
+<kw name="Cenários de login com falha">
+<arg>problem_user</arg>
+<arg>secret_sauce</arg>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id=user-name</arg>
+<arg>${login}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231210 22:28:06.086" level="INFO">Typing text 'problem_user' into text field 'id=user-name'.</msg>
+<status status="PASS" starttime="20231210 22:28:06.085" endtime="20231210 22:28:06.223"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id=password</arg>
+<arg>${password}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231210 22:28:06.224" level="INFO">Typing text 'secret_sauce' into text field 'id=password'.</msg>
+<status status="PASS" starttime="20231210 22:28:06.224" endtime="20231210 22:28:06.255"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${comparacao1}</var>
+<arg>'${login}' == 'standard_user'</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20231210 22:28:06.256" level="INFO">${comparacao1} = False</msg>
+<status status="PASS" starttime="20231210 22:28:06.256" endtime="20231210 22:28:06.256"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${comparacao2}</var>
+<arg>'${login}' == 'locked_out_user'</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20231210 22:28:06.256" level="INFO">${comparacao2} = False</msg>
+<status status="PASS" starttime="20231210 22:28:06.256" endtime="20231210 22:28:06.257"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${comparacao3}</var>
+<arg>'${login}' == 'problem_user'</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20231210 22:28:06.257" level="INFO">${comparacao3} = True</msg>
+<status status="PASS" starttime="20231210 22:28:06.257" endtime="20231210 22:28:06.257"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${comparacao4}</var>
+<arg>'${login}' == 'performance_glitch_user'</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20231210 22:28:06.257" level="INFO">${comparacao4} = False</msg>
+<status status="PASS" starttime="20231210 22:28:06.257" endtime="20231210 22:28:06.257"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${comparacao5}</var>
+<arg>'${login}' == 'error_user'</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20231210 22:28:06.258" level="INFO">${comparacao5} = False</msg>
+<status status="PASS" starttime="20231210 22:28:06.257" endtime="20231210 22:28:06.258"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${comparacao6}</var>
+<arg>'${login}' == 'visual_user'</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20231210 22:28:06.258" level="INFO">${comparacao6} = False</msg>
+<status status="PASS" starttime="20231210 22:28:06.258" endtime="20231210 22:28:06.258"/>
+</kw>
+<if>
+<branch type="IF" condition="${comparacao1} == ${True}">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id=login-button</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:06.259" endtime="20231210 22:28:06.259"/>
+</kw>
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<arg>Products</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:06.259" endtime="20231210 22:28:06.259"/>
+</kw>
+<kw name="Page Should Contain" library="SeleniumLibrary">
+<arg>Products</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:06.259" endtime="20231210 22:28:06.259"/>
+</kw>
+<kw name="Get Horizontal Position" library="SeleniumLibrary">
+<var>${x_cart}</var>
+<arg>locator=//*[@id="shopping_cart_container"]/a</arg>
+<doc>Returns the horizontal position of the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:06.259" endtime="20231210 22:28:06.259"/>
+</kw>
+<kw name="Get Vertical Position" library="SeleniumLibrary">
+<var>${y_cart}</var>
+<arg>locator=//*[@id="shopping_cart_container"]/a</arg>
+<doc>Returns the vertical position of the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:06.259" endtime="20231210 22:28:06.259"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>locator=//*[@id="shopping_cart_container"]/a</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:06.259" endtime="20231210 22:28:06.260"/>
+</kw>
+<kw name="Get Horizontal Position" library="SeleniumLibrary">
+<var>${x_checkout}</var>
+<arg>id=checkout</arg>
+<doc>Returns the horizontal position of the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:06.260" endtime="20231210 22:28:06.260"/>
+</kw>
+<kw name="Get Vertical Position" library="SeleniumLibrary">
+<var>${y_checkout}</var>
+<arg>id=checkout</arg>
+<doc>Returns the vertical position of the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:06.260" endtime="20231210 22:28:06.260"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${x_cart}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:06.260" endtime="20231210 22:28:06.260"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${y_cart}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:06.260" endtime="20231210 22:28:06.260"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${x_checkout}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:06.260" endtime="20231210 22:28:06.261"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${y_checkout}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:06.261" endtime="20231210 22:28:06.261"/>
+</kw>
+<status status="NOT RUN" starttime="20231210 22:28:06.258" endtime="20231210 22:28:06.261"/>
+</branch>
+<branch type="ELSE IF" condition="${comparacao2} == ${True}">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id=login-button</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:06.261" endtime="20231210 22:28:06.261"/>
+</kw>
+<kw name="Page Should Contain" library="SeleniumLibrary">
+<arg>Epic sadface: Sorry, this user has been locked out.</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:06.261" endtime="20231210 22:28:06.261"/>
+</kw>
+<status status="NOT RUN" starttime="20231210 22:28:06.261" endtime="20231210 22:28:06.261"/>
+</branch>
+<branch type="ELSE IF" condition="${comparacao3} == ${True}">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id=login-button</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20231210 22:28:06.262" level="INFO">Clicking element 'id=login-button'.</msg>
+<status status="PASS" starttime="20231210 22:28:06.262" endtime="20231210 22:28:06.535"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id=add-to-cart-sauce-labs-backpack</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20231210 22:28:06.535" level="INFO">Clicking element 'id=add-to-cart-sauce-labs-backpack'.</msg>
+<status status="PASS" starttime="20231210 22:28:06.535" endtime="20231210 22:28:06.752"/>
+</kw>
+<kw name="Page Should Contain Element" library="SeleniumLibrary">
+<arg>id=remove-sauce-labs-backpack</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<msg timestamp="20231210 22:28:06.755" level="INFO">Current page contains element 'id=remove-sauce-labs-backpack'.</msg>
+<status status="PASS" starttime="20231210 22:28:06.752" endtime="20231210 22:28:06.755"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id=remove-sauce-labs-backpack</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20231210 22:28:06.756" level="INFO">Clicking element 'id=remove-sauce-labs-backpack'.</msg>
+<status status="PASS" starttime="20231210 22:28:06.755" endtime="20231210 22:28:06.970"/>
+</kw>
+<kw name="Page Should Contain Element" library="SeleniumLibrary">
+<arg>id=add-to-cart-sauce-labs-backpack</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<msg timestamp="20231210 22:28:07.062" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-3.png"&gt;&lt;img src="selenium-screenshot-3.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg timestamp="20231210 22:28:07.064" level="FAIL">Page should have contained element 'id=add-to-cart-sauce-labs-backpack' but did not.</msg>
+<status status="FAIL" starttime="20231210 22:28:06.971" endtime="20231210 22:28:07.076"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id=add-to-cart-sauce-labs-bolt-t-shirt</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:07.076" endtime="20231210 22:28:07.076"/>
+</kw>
+<kw name="Page Should Contain Element" library="SeleniumLibrary">
+<arg>id=remove-sauce-labs-bolt-t-shirt</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:07.076" endtime="20231210 22:28:07.076"/>
+</kw>
+<status status="FAIL" starttime="20231210 22:28:06.261" endtime="20231210 22:28:07.076"/>
+</branch>
+<branch type="ELSE IF" condition="${comparacao4} == ${True}">
+<kw name="Get Time" library="BuiltIn">
+<var>${now}</var>
+<arg>format=yearmonthdayhourminsec</arg>
+<doc>Returns the given time in the requested format.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:07.077" endtime="20231210 22:28:07.077"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${now}</var>
+<arg>${now}[0]${now}[1]${now}[2]${now}[3]${now}[4]${now}[5]</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:07.077" endtime="20231210 22:28:07.077"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id=login-button</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:07.077" endtime="20231210 22:28:07.077"/>
+</kw>
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<arg>Products</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:07.077" endtime="20231210 22:28:07.077"/>
+</kw>
+<kw name="Get Time" library="BuiltIn">
+<var>${after}</var>
+<arg>format=yearmonthdayhourminsec</arg>
+<doc>Returns the given time in the requested format.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:07.077" endtime="20231210 22:28:07.077"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${after}</var>
+<arg>${after}[0]${after}[1]${after}[2]${after}[3]${after}[4]${after}[5]</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:07.077" endtime="20231210 22:28:07.077"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${duration}</var>
+<arg>${after} - ${now}</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:07.077" endtime="20231210 22:28:07.077"/>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<arg>${duration} &lt; 3</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:07.077" endtime="20231210 22:28:07.077"/>
+</kw>
+<status status="NOT RUN" starttime="20231210 22:28:07.076" endtime="20231210 22:28:07.077"/>
+</branch>
+<branch type="ELSE IF" condition="${comparacao5} == ${True}">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id=login-button</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:07.078" endtime="20231210 22:28:07.078"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id=add-to-cart-sauce-labs-backpack</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:07.078" endtime="20231210 22:28:07.078"/>
+</kw>
+<kw name="Page Should Contain Element" library="SeleniumLibrary">
+<arg>id=remove-sauce-labs-backpack</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:07.078" endtime="20231210 22:28:07.078"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id=add-to-cart-sauce-labs-bolt-t-shirt</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:07.078" endtime="20231210 22:28:07.078"/>
+</kw>
+<kw name="Page Should Contain Element" library="SeleniumLibrary">
+<arg>id=remove-sauce-labs-bolt-t-shirt</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:07.078" endtime="20231210 22:28:07.078"/>
+</kw>
+<status status="NOT RUN" starttime="20231210 22:28:07.078" endtime="20231210 22:28:07.078"/>
+</branch>
+<branch type="ELSE IF" condition="${comparacao6} == ${True}">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id=login-button</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:07.079" endtime="20231210 22:28:07.079"/>
+</kw>
+<kw name="Get Horizontal Position" library="SeleniumLibrary">
+<var>${xx}</var>
+<arg>locator=//*[@id="shopping_cart_container"]/a</arg>
+<doc>Returns the horizontal position of the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:07.079" endtime="20231210 22:28:07.079"/>
+</kw>
+<kw name="Get Vertical Position" library="SeleniumLibrary">
+<var>${yy}</var>
+<arg>locator=//*[@id="shopping_cart_container"]/a</arg>
+<doc>Returns the vertical position of the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:07.079" endtime="20231210 22:28:07.079"/>
+</kw>
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<arg>${xx}</arg>
+<arg>${x_cart}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:07.079" endtime="20231210 22:28:07.079"/>
+</kw>
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<arg>${yy}</arg>
+<arg>${y_cart}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:07.079" endtime="20231210 22:28:07.079"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>locator=//*[@id="shopping_cart_container"]/a</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:07.079" endtime="20231210 22:28:07.079"/>
+</kw>
+<kw name="Get Horizontal Position" library="SeleniumLibrary">
+<var>${xxx}</var>
+<arg>id=checkout</arg>
+<doc>Returns the horizontal position of the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:07.079" endtime="20231210 22:28:07.079"/>
+</kw>
+<kw name="Get Vertical Position" library="SeleniumLibrary">
+<var>${yyy}</var>
+<arg>id=checkout</arg>
+<doc>Returns the vertical position of the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:07.079" endtime="20231210 22:28:07.079"/>
+</kw>
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<arg>${xxx}</arg>
+<arg>${x_checkout}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:07.079" endtime="20231210 22:28:07.079"/>
+</kw>
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<arg>${yyy}</arg>
+<arg>${y_checkout}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:07.080" endtime="20231210 22:28:07.080"/>
+</kw>
+<status status="NOT RUN" starttime="20231210 22:28:07.078" endtime="20231210 22:28:07.080"/>
+</branch>
+<status status="FAIL" starttime="20231210 22:28:06.258" endtime="20231210 22:28:07.080"/>
+</if>
+<status status="FAIL" starttime="20231210 22:28:06.084" endtime="20231210 22:28:07.080"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20231210 22:28:07.082" endtime="20231210 22:28:10.066"/>
+</kw>
+<status status="FAIL" starttime="20231210 22:27:58.758" endtime="20231210 22:28:10.066">Page should have contained element 'id=add-to-cart-sauce-labs-backpack' but did not.</status>
+</test>
+<test id="s1-s2-t4" name="Login com performance_glitch_user" line="12">
+<kw name="Conexão com Sauce Demo" library="base" type="SETUP">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20231210 22:28:10.074" level="INFO">Opening browser 'Firefox' to base url 'https://www.saucedemo.com/'.</msg>
+<status status="PASS" starttime="20231210 22:28:10.073" endtime="20231210 22:28:17.829"/>
+</kw>
+<status status="PASS" starttime="20231210 22:28:10.071" endtime="20231210 22:28:17.829"/>
+</kw>
+<kw name="Cenários de login com falha">
+<arg>performance_glitch_user</arg>
+<arg>secret_sauce</arg>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id=user-name</arg>
+<arg>${login}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231210 22:28:17.833" level="INFO">Typing text 'performance_glitch_user' into text field 'id=user-name'.</msg>
+<status status="PASS" starttime="20231210 22:28:17.832" endtime="20231210 22:28:17.986"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id=password</arg>
+<arg>${password}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231210 22:28:17.986" level="INFO">Typing text 'secret_sauce' into text field 'id=password'.</msg>
+<status status="PASS" starttime="20231210 22:28:17.986" endtime="20231210 22:28:18.009"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${comparacao1}</var>
+<arg>'${login}' == 'standard_user'</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20231210 22:28:18.010" level="INFO">${comparacao1} = False</msg>
+<status status="PASS" starttime="20231210 22:28:18.009" endtime="20231210 22:28:18.010"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${comparacao2}</var>
+<arg>'${login}' == 'locked_out_user'</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20231210 22:28:18.010" level="INFO">${comparacao2} = False</msg>
+<status status="PASS" starttime="20231210 22:28:18.010" endtime="20231210 22:28:18.010"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${comparacao3}</var>
+<arg>'${login}' == 'problem_user'</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20231210 22:28:18.011" level="INFO">${comparacao3} = False</msg>
+<status status="PASS" starttime="20231210 22:28:18.010" endtime="20231210 22:28:18.011"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${comparacao4}</var>
+<arg>'${login}' == 'performance_glitch_user'</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20231210 22:28:18.011" level="INFO">${comparacao4} = True</msg>
+<status status="PASS" starttime="20231210 22:28:18.011" endtime="20231210 22:28:18.011"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${comparacao5}</var>
+<arg>'${login}' == 'error_user'</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20231210 22:28:18.011" level="INFO">${comparacao5} = False</msg>
+<status status="PASS" starttime="20231210 22:28:18.011" endtime="20231210 22:28:18.011"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${comparacao6}</var>
+<arg>'${login}' == 'visual_user'</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20231210 22:28:18.012" level="INFO">${comparacao6} = False</msg>
+<status status="PASS" starttime="20231210 22:28:18.012" endtime="20231210 22:28:18.012"/>
+</kw>
+<if>
+<branch type="IF" condition="${comparacao1} == ${True}">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id=login-button</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:18.012" endtime="20231210 22:28:18.012"/>
+</kw>
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<arg>Products</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:18.012" endtime="20231210 22:28:18.012"/>
+</kw>
+<kw name="Page Should Contain" library="SeleniumLibrary">
+<arg>Products</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:18.012" endtime="20231210 22:28:18.012"/>
+</kw>
+<kw name="Get Horizontal Position" library="SeleniumLibrary">
+<var>${x_cart}</var>
+<arg>locator=//*[@id="shopping_cart_container"]/a</arg>
+<doc>Returns the horizontal position of the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:18.013" endtime="20231210 22:28:18.013"/>
+</kw>
+<kw name="Get Vertical Position" library="SeleniumLibrary">
+<var>${y_cart}</var>
+<arg>locator=//*[@id="shopping_cart_container"]/a</arg>
+<doc>Returns the vertical position of the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:18.013" endtime="20231210 22:28:18.013"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>locator=//*[@id="shopping_cart_container"]/a</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:18.013" endtime="20231210 22:28:18.013"/>
+</kw>
+<kw name="Get Horizontal Position" library="SeleniumLibrary">
+<var>${x_checkout}</var>
+<arg>id=checkout</arg>
+<doc>Returns the horizontal position of the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:18.013" endtime="20231210 22:28:18.013"/>
+</kw>
+<kw name="Get Vertical Position" library="SeleniumLibrary">
+<var>${y_checkout}</var>
+<arg>id=checkout</arg>
+<doc>Returns the vertical position of the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:18.013" endtime="20231210 22:28:18.013"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${x_cart}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:18.013" endtime="20231210 22:28:18.013"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${y_cart}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:18.013" endtime="20231210 22:28:18.013"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${x_checkout}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:18.013" endtime="20231210 22:28:18.013"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${y_checkout}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:18.014" endtime="20231210 22:28:18.014"/>
+</kw>
+<status status="NOT RUN" starttime="20231210 22:28:18.012" endtime="20231210 22:28:18.014"/>
+</branch>
+<branch type="ELSE IF" condition="${comparacao2} == ${True}">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id=login-button</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:18.014" endtime="20231210 22:28:18.014"/>
+</kw>
+<kw name="Page Should Contain" library="SeleniumLibrary">
+<arg>Epic sadface: Sorry, this user has been locked out.</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:18.014" endtime="20231210 22:28:18.014"/>
+</kw>
+<status status="NOT RUN" starttime="20231210 22:28:18.014" endtime="20231210 22:28:18.014"/>
+</branch>
+<branch type="ELSE IF" condition="${comparacao3} == ${True}">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id=login-button</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:18.014" endtime="20231210 22:28:18.015"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id=add-to-cart-sauce-labs-backpack</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:18.015" endtime="20231210 22:28:18.015"/>
+</kw>
+<kw name="Page Should Contain Element" library="SeleniumLibrary">
+<arg>id=remove-sauce-labs-backpack</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:18.015" endtime="20231210 22:28:18.015"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id=remove-sauce-labs-backpack</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:18.015" endtime="20231210 22:28:18.015"/>
+</kw>
+<kw name="Page Should Contain Element" library="SeleniumLibrary">
+<arg>id=add-to-cart-sauce-labs-backpack</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:18.015" endtime="20231210 22:28:18.015"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id=add-to-cart-sauce-labs-bolt-t-shirt</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:18.015" endtime="20231210 22:28:18.015"/>
+</kw>
+<kw name="Page Should Contain Element" library="SeleniumLibrary">
+<arg>id=remove-sauce-labs-bolt-t-shirt</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:18.015" endtime="20231210 22:28:18.015"/>
+</kw>
+<status status="NOT RUN" starttime="20231210 22:28:18.014" endtime="20231210 22:28:18.016"/>
+</branch>
+<branch type="ELSE IF" condition="${comparacao4} == ${True}">
+<kw name="Get Time" library="BuiltIn">
+<var>${now}</var>
+<arg>format=yearmonthdayhourminsec</arg>
+<doc>Returns the given time in the requested format.</doc>
+<msg timestamp="20231210 22:28:18.016" level="INFO">${now} = ['2023', '12', '10', '22', '28', '18']</msg>
+<status status="PASS" starttime="20231210 22:28:18.016" endtime="20231210 22:28:18.016"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${now}</var>
+<arg>${now}[0]${now}[1]${now}[2]${now}[3]${now}[4]${now}[5]</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20231210 22:28:18.017" level="INFO">${now} = 20231210222818</msg>
+<status status="PASS" starttime="20231210 22:28:18.016" endtime="20231210 22:28:18.017"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id=login-button</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20231210 22:28:18.017" level="INFO">Clicking element 'id=login-button'.</msg>
+<status status="PASS" starttime="20231210 22:28:18.017" endtime="20231210 22:28:23.281"/>
+</kw>
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<arg>Products</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" starttime="20231210 22:28:23.281" endtime="20231210 22:28:23.286"/>
+</kw>
+<kw name="Get Time" library="BuiltIn">
+<var>${after}</var>
+<arg>format=yearmonthdayhourminsec</arg>
+<doc>Returns the given time in the requested format.</doc>
+<msg timestamp="20231210 22:28:23.286" level="INFO">${after} = ['2023', '12', '10', '22', '28', '23']</msg>
+<status status="PASS" starttime="20231210 22:28:23.286" endtime="20231210 22:28:23.286"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${after}</var>
+<arg>${after}[0]${after}[1]${after}[2]${after}[3]${after}[4]${after}[5]</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20231210 22:28:23.287" level="INFO">${after} = 20231210222823</msg>
+<status status="PASS" starttime="20231210 22:28:23.286" endtime="20231210 22:28:23.287"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${duration}</var>
+<arg>${after} - ${now}</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20231210 22:28:23.287" level="INFO">${duration} = 5</msg>
+<status status="PASS" starttime="20231210 22:28:23.287" endtime="20231210 22:28:23.287"/>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<arg>${duration} &lt; 3</arg>
+<doc>Fails if the given condition is not true.</doc>
+<msg timestamp="20231210 22:28:23.288" level="FAIL">'5 &lt; 3' should be true.</msg>
+<status status="FAIL" starttime="20231210 22:28:23.287" endtime="20231210 22:28:23.288"/>
+</kw>
+<status status="FAIL" starttime="20231210 22:28:18.016" endtime="20231210 22:28:23.288"/>
+</branch>
+<branch type="ELSE IF" condition="${comparacao5} == ${True}">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id=login-button</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:23.288" endtime="20231210 22:28:23.288"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id=add-to-cart-sauce-labs-backpack</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:23.288" endtime="20231210 22:28:23.288"/>
+</kw>
+<kw name="Page Should Contain Element" library="SeleniumLibrary">
+<arg>id=remove-sauce-labs-backpack</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:23.288" endtime="20231210 22:28:23.288"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id=add-to-cart-sauce-labs-bolt-t-shirt</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:23.288" endtime="20231210 22:28:23.288"/>
+</kw>
+<kw name="Page Should Contain Element" library="SeleniumLibrary">
+<arg>id=remove-sauce-labs-bolt-t-shirt</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:23.288" endtime="20231210 22:28:23.288"/>
+</kw>
+<status status="NOT RUN" starttime="20231210 22:28:23.288" endtime="20231210 22:28:23.288"/>
+</branch>
+<branch type="ELSE IF" condition="${comparacao6} == ${True}">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id=login-button</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:23.288" endtime="20231210 22:28:23.288"/>
+</kw>
+<kw name="Get Horizontal Position" library="SeleniumLibrary">
+<var>${xx}</var>
+<arg>locator=//*[@id="shopping_cart_container"]/a</arg>
+<doc>Returns the horizontal position of the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:23.288" endtime="20231210 22:28:23.288"/>
+</kw>
+<kw name="Get Vertical Position" library="SeleniumLibrary">
+<var>${yy}</var>
+<arg>locator=//*[@id="shopping_cart_container"]/a</arg>
+<doc>Returns the vertical position of the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:23.289" endtime="20231210 22:28:23.289"/>
+</kw>
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<arg>${xx}</arg>
+<arg>${x_cart}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:23.289" endtime="20231210 22:28:23.289"/>
+</kw>
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<arg>${yy}</arg>
+<arg>${y_cart}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:23.289" endtime="20231210 22:28:23.289"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>locator=//*[@id="shopping_cart_container"]/a</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:23.289" endtime="20231210 22:28:23.289"/>
+</kw>
+<kw name="Get Horizontal Position" library="SeleniumLibrary">
+<var>${xxx}</var>
+<arg>id=checkout</arg>
+<doc>Returns the horizontal position of the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:23.289" endtime="20231210 22:28:23.289"/>
+</kw>
+<kw name="Get Vertical Position" library="SeleniumLibrary">
+<var>${yyy}</var>
+<arg>id=checkout</arg>
+<doc>Returns the vertical position of the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:23.289" endtime="20231210 22:28:23.289"/>
+</kw>
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<arg>${xxx}</arg>
+<arg>${x_checkout}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:23.289" endtime="20231210 22:28:23.289"/>
+</kw>
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<arg>${yyy}</arg>
+<arg>${y_checkout}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:23.289" endtime="20231210 22:28:23.289"/>
+</kw>
+<status status="NOT RUN" starttime="20231210 22:28:23.288" endtime="20231210 22:28:23.289"/>
+</branch>
+<status status="FAIL" starttime="20231210 22:28:18.012" endtime="20231210 22:28:23.289"/>
+</if>
+<status status="FAIL" starttime="20231210 22:28:17.830" endtime="20231210 22:28:23.290"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20231210 22:28:23.291" endtime="20231210 22:28:26.135"/>
+</kw>
+<status status="FAIL" starttime="20231210 22:28:10.069" endtime="20231210 22:28:26.135">'5 &lt; 3' should be true.</status>
+</test>
+<test id="s1-s2-t5" name="Login com error_user" line="13">
+<kw name="Conexão com Sauce Demo" library="base" type="SETUP">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20231210 22:28:26.139" level="INFO">Opening browser 'Firefox' to base url 'https://www.saucedemo.com/'.</msg>
+<status status="PASS" starttime="20231210 22:28:26.138" endtime="20231210 22:28:33.066"/>
+</kw>
+<status status="PASS" starttime="20231210 22:28:26.138" endtime="20231210 22:28:33.067"/>
+</kw>
+<kw name="Cenários de login com falha">
+<arg>error_user</arg>
+<arg>secret_sauce</arg>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id=user-name</arg>
+<arg>${login}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231210 22:28:33.069" level="INFO">Typing text 'error_user' into text field 'id=user-name'.</msg>
+<status status="PASS" starttime="20231210 22:28:33.068" endtime="20231210 22:28:33.185"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id=password</arg>
+<arg>${password}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231210 22:28:33.187" level="INFO">Typing text 'secret_sauce' into text field 'id=password'.</msg>
+<status status="PASS" starttime="20231210 22:28:33.186" endtime="20231210 22:28:33.238"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${comparacao1}</var>
+<arg>'${login}' == 'standard_user'</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20231210 22:28:33.239" level="INFO">${comparacao1} = False</msg>
+<status status="PASS" starttime="20231210 22:28:33.238" endtime="20231210 22:28:33.239"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${comparacao2}</var>
+<arg>'${login}' == 'locked_out_user'</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20231210 22:28:33.239" level="INFO">${comparacao2} = False</msg>
+<status status="PASS" starttime="20231210 22:28:33.239" endtime="20231210 22:28:33.239"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${comparacao3}</var>
+<arg>'${login}' == 'problem_user'</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20231210 22:28:33.240" level="INFO">${comparacao3} = False</msg>
+<status status="PASS" starttime="20231210 22:28:33.239" endtime="20231210 22:28:33.240"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${comparacao4}</var>
+<arg>'${login}' == 'performance_glitch_user'</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20231210 22:28:33.240" level="INFO">${comparacao4} = False</msg>
+<status status="PASS" starttime="20231210 22:28:33.240" endtime="20231210 22:28:33.240"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${comparacao5}</var>
+<arg>'${login}' == 'error_user'</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20231210 22:28:33.241" level="INFO">${comparacao5} = True</msg>
+<status status="PASS" starttime="20231210 22:28:33.240" endtime="20231210 22:28:33.241"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${comparacao6}</var>
+<arg>'${login}' == 'visual_user'</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20231210 22:28:33.241" level="INFO">${comparacao6} = False</msg>
+<status status="PASS" starttime="20231210 22:28:33.241" endtime="20231210 22:28:33.241"/>
+</kw>
+<if>
+<branch type="IF" condition="${comparacao1} == ${True}">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id=login-button</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:33.241" endtime="20231210 22:28:33.241"/>
+</kw>
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<arg>Products</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:33.241" endtime="20231210 22:28:33.241"/>
+</kw>
+<kw name="Page Should Contain" library="SeleniumLibrary">
+<arg>Products</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:33.242" endtime="20231210 22:28:33.242"/>
+</kw>
+<kw name="Get Horizontal Position" library="SeleniumLibrary">
+<var>${x_cart}</var>
+<arg>locator=//*[@id="shopping_cart_container"]/a</arg>
+<doc>Returns the horizontal position of the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:33.242" endtime="20231210 22:28:33.242"/>
+</kw>
+<kw name="Get Vertical Position" library="SeleniumLibrary">
+<var>${y_cart}</var>
+<arg>locator=//*[@id="shopping_cart_container"]/a</arg>
+<doc>Returns the vertical position of the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:33.242" endtime="20231210 22:28:33.242"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>locator=//*[@id="shopping_cart_container"]/a</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:33.242" endtime="20231210 22:28:33.242"/>
+</kw>
+<kw name="Get Horizontal Position" library="SeleniumLibrary">
+<var>${x_checkout}</var>
+<arg>id=checkout</arg>
+<doc>Returns the horizontal position of the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:33.242" endtime="20231210 22:28:33.242"/>
+</kw>
+<kw name="Get Vertical Position" library="SeleniumLibrary">
+<var>${y_checkout}</var>
+<arg>id=checkout</arg>
+<doc>Returns the vertical position of the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:33.242" endtime="20231210 22:28:33.242"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${x_cart}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:33.242" endtime="20231210 22:28:33.242"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${y_cart}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:33.242" endtime="20231210 22:28:33.242"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${x_checkout}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:33.242" endtime="20231210 22:28:33.243"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${y_checkout}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:33.243" endtime="20231210 22:28:33.243"/>
+</kw>
+<status status="NOT RUN" starttime="20231210 22:28:33.241" endtime="20231210 22:28:33.243"/>
+</branch>
+<branch type="ELSE IF" condition="${comparacao2} == ${True}">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id=login-button</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:33.243" endtime="20231210 22:28:33.243"/>
+</kw>
+<kw name="Page Should Contain" library="SeleniumLibrary">
+<arg>Epic sadface: Sorry, this user has been locked out.</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:33.243" endtime="20231210 22:28:33.243"/>
+</kw>
+<status status="NOT RUN" starttime="20231210 22:28:33.243" endtime="20231210 22:28:33.243"/>
+</branch>
+<branch type="ELSE IF" condition="${comparacao3} == ${True}">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id=login-button</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:33.243" endtime="20231210 22:28:33.243"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id=add-to-cart-sauce-labs-backpack</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:33.243" endtime="20231210 22:28:33.243"/>
+</kw>
+<kw name="Page Should Contain Element" library="SeleniumLibrary">
+<arg>id=remove-sauce-labs-backpack</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:33.244" endtime="20231210 22:28:33.244"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id=remove-sauce-labs-backpack</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:33.244" endtime="20231210 22:28:33.244"/>
+</kw>
+<kw name="Page Should Contain Element" library="SeleniumLibrary">
+<arg>id=add-to-cart-sauce-labs-backpack</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:33.244" endtime="20231210 22:28:33.244"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id=add-to-cart-sauce-labs-bolt-t-shirt</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:33.244" endtime="20231210 22:28:33.244"/>
+</kw>
+<kw name="Page Should Contain Element" library="SeleniumLibrary">
+<arg>id=remove-sauce-labs-bolt-t-shirt</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:33.244" endtime="20231210 22:28:33.244"/>
+</kw>
+<status status="NOT RUN" starttime="20231210 22:28:33.243" endtime="20231210 22:28:33.244"/>
+</branch>
+<branch type="ELSE IF" condition="${comparacao4} == ${True}">
+<kw name="Get Time" library="BuiltIn">
+<var>${now}</var>
+<arg>format=yearmonthdayhourminsec</arg>
+<doc>Returns the given time in the requested format.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:33.244" endtime="20231210 22:28:33.244"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${now}</var>
+<arg>${now}[0]${now}[1]${now}[2]${now}[3]${now}[4]${now}[5]</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:33.245" endtime="20231210 22:28:33.245"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id=login-button</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:33.245" endtime="20231210 22:28:33.245"/>
+</kw>
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<arg>Products</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:33.245" endtime="20231210 22:28:33.245"/>
+</kw>
+<kw name="Get Time" library="BuiltIn">
+<var>${after}</var>
+<arg>format=yearmonthdayhourminsec</arg>
+<doc>Returns the given time in the requested format.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:33.245" endtime="20231210 22:28:33.245"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${after}</var>
+<arg>${after}[0]${after}[1]${after}[2]${after}[3]${after}[4]${after}[5]</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:33.245" endtime="20231210 22:28:33.245"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${duration}</var>
+<arg>${after} - ${now}</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:33.245" endtime="20231210 22:28:33.245"/>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<arg>${duration} &lt; 3</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:33.245" endtime="20231210 22:28:33.245"/>
+</kw>
+<status status="NOT RUN" starttime="20231210 22:28:33.244" endtime="20231210 22:28:33.245"/>
+</branch>
+<branch type="ELSE IF" condition="${comparacao5} == ${True}">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id=login-button</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20231210 22:28:33.246" level="INFO">Clicking element 'id=login-button'.</msg>
+<status status="PASS" starttime="20231210 22:28:33.246" endtime="20231210 22:28:33.511"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id=add-to-cart-sauce-labs-backpack</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20231210 22:28:33.512" level="INFO">Clicking element 'id=add-to-cart-sauce-labs-backpack'.</msg>
+<status status="PASS" starttime="20231210 22:28:33.511" endtime="20231210 22:28:33.728"/>
+</kw>
+<kw name="Page Should Contain Element" library="SeleniumLibrary">
+<arg>id=remove-sauce-labs-backpack</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<msg timestamp="20231210 22:28:33.732" level="INFO">Current page contains element 'id=remove-sauce-labs-backpack'.</msg>
+<status status="PASS" starttime="20231210 22:28:33.728" endtime="20231210 22:28:33.732"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id=add-to-cart-sauce-labs-bolt-t-shirt</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20231210 22:28:33.733" level="INFO">Clicking element 'id=add-to-cart-sauce-labs-bolt-t-shirt'.</msg>
+<status status="PASS" starttime="20231210 22:28:33.732" endtime="20231210 22:28:33.951"/>
+</kw>
+<kw name="Page Should Contain Element" library="SeleniumLibrary">
+<arg>id=remove-sauce-labs-bolt-t-shirt</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<msg timestamp="20231210 22:28:34.047" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-4.png"&gt;&lt;img src="selenium-screenshot-4.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg timestamp="20231210 22:28:34.047" level="FAIL">Page should have contained element 'id=remove-sauce-labs-bolt-t-shirt' but did not.</msg>
+<status status="FAIL" starttime="20231210 22:28:33.951" endtime="20231210 22:28:34.047"/>
+</kw>
+<status status="FAIL" starttime="20231210 22:28:33.245" endtime="20231210 22:28:34.048"/>
+</branch>
+<branch type="ELSE IF" condition="${comparacao6} == ${True}">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id=login-button</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:34.048" endtime="20231210 22:28:34.048"/>
+</kw>
+<kw name="Get Horizontal Position" library="SeleniumLibrary">
+<var>${xx}</var>
+<arg>locator=//*[@id="shopping_cart_container"]/a</arg>
+<doc>Returns the horizontal position of the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:34.048" endtime="20231210 22:28:34.048"/>
+</kw>
+<kw name="Get Vertical Position" library="SeleniumLibrary">
+<var>${yy}</var>
+<arg>locator=//*[@id="shopping_cart_container"]/a</arg>
+<doc>Returns the vertical position of the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:34.048" endtime="20231210 22:28:34.048"/>
+</kw>
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<arg>${xx}</arg>
+<arg>${x_cart}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:34.048" endtime="20231210 22:28:34.048"/>
+</kw>
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<arg>${yy}</arg>
+<arg>${y_cart}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:34.048" endtime="20231210 22:28:34.048"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>locator=//*[@id="shopping_cart_container"]/a</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:34.048" endtime="20231210 22:28:34.048"/>
+</kw>
+<kw name="Get Horizontal Position" library="SeleniumLibrary">
+<var>${xxx}</var>
+<arg>id=checkout</arg>
+<doc>Returns the horizontal position of the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:34.049" endtime="20231210 22:28:34.049"/>
+</kw>
+<kw name="Get Vertical Position" library="SeleniumLibrary">
+<var>${yyy}</var>
+<arg>id=checkout</arg>
+<doc>Returns the vertical position of the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:34.049" endtime="20231210 22:28:34.049"/>
+</kw>
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<arg>${xxx}</arg>
+<arg>${x_checkout}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:34.049" endtime="20231210 22:28:34.049"/>
+</kw>
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<arg>${yyy}</arg>
+<arg>${y_checkout}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:34.049" endtime="20231210 22:28:34.049"/>
+</kw>
+<status status="NOT RUN" starttime="20231210 22:28:34.048" endtime="20231210 22:28:34.049"/>
+</branch>
+<status status="FAIL" starttime="20231210 22:28:33.241" endtime="20231210 22:28:34.049"/>
+</if>
+<status status="FAIL" starttime="20231210 22:28:33.067" endtime="20231210 22:28:34.049"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20231210 22:28:34.050" endtime="20231210 22:28:37.101"/>
+</kw>
+<status status="FAIL" starttime="20231210 22:28:26.137" endtime="20231210 22:28:37.101">Page should have contained element 'id=remove-sauce-labs-bolt-t-shirt' but did not.</status>
+</test>
+<test id="s1-s2-t6" name="Login com visual_user" line="14">
+<kw name="Conexão com Sauce Demo" library="base" type="SETUP">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20231210 22:28:37.105" level="INFO">Opening browser 'Firefox' to base url 'https://www.saucedemo.com/'.</msg>
+<status status="PASS" starttime="20231210 22:28:37.104" endtime="20231210 22:28:43.967"/>
+</kw>
+<status status="PASS" starttime="20231210 22:28:37.104" endtime="20231210 22:28:43.967"/>
+</kw>
+<kw name="Cenários de login com falha">
+<arg>visual_user</arg>
+<arg>secret_sauce</arg>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id=user-name</arg>
+<arg>${login}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231210 22:28:43.969" level="INFO">Typing text 'visual_user' into text field 'id=user-name'.</msg>
+<status status="PASS" starttime="20231210 22:28:43.968" endtime="20231210 22:28:44.104"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id=password</arg>
+<arg>${password}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231210 22:28:44.105" level="INFO">Typing text 'secret_sauce' into text field 'id=password'.</msg>
+<status status="PASS" starttime="20231210 22:28:44.104" endtime="20231210 22:28:44.143"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${comparacao1}</var>
+<arg>'${login}' == 'standard_user'</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20231210 22:28:44.143" level="INFO">${comparacao1} = False</msg>
+<status status="PASS" starttime="20231210 22:28:44.143" endtime="20231210 22:28:44.143"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${comparacao2}</var>
+<arg>'${login}' == 'locked_out_user'</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20231210 22:28:44.144" level="INFO">${comparacao2} = False</msg>
+<status status="PASS" starttime="20231210 22:28:44.143" endtime="20231210 22:28:44.144"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${comparacao3}</var>
+<arg>'${login}' == 'problem_user'</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20231210 22:28:44.144" level="INFO">${comparacao3} = False</msg>
+<status status="PASS" starttime="20231210 22:28:44.144" endtime="20231210 22:28:44.144"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${comparacao4}</var>
+<arg>'${login}' == 'performance_glitch_user'</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20231210 22:28:44.145" level="INFO">${comparacao4} = False</msg>
+<status status="PASS" starttime="20231210 22:28:44.144" endtime="20231210 22:28:44.145"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${comparacao5}</var>
+<arg>'${login}' == 'error_user'</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20231210 22:28:44.145" level="INFO">${comparacao5} = False</msg>
+<status status="PASS" starttime="20231210 22:28:44.145" endtime="20231210 22:28:44.145"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${comparacao6}</var>
+<arg>'${login}' == 'visual_user'</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20231210 22:28:44.146" level="INFO">${comparacao6} = True</msg>
+<status status="PASS" starttime="20231210 22:28:44.145" endtime="20231210 22:28:44.146"/>
+</kw>
+<if>
+<branch type="IF" condition="${comparacao1} == ${True}">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id=login-button</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:44.146" endtime="20231210 22:28:44.146"/>
+</kw>
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<arg>Products</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:44.146" endtime="20231210 22:28:44.146"/>
+</kw>
+<kw name="Page Should Contain" library="SeleniumLibrary">
+<arg>Products</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:44.146" endtime="20231210 22:28:44.146"/>
+</kw>
+<kw name="Get Horizontal Position" library="SeleniumLibrary">
+<var>${x_cart}</var>
+<arg>locator=//*[@id="shopping_cart_container"]/a</arg>
+<doc>Returns the horizontal position of the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:44.146" endtime="20231210 22:28:44.147"/>
+</kw>
+<kw name="Get Vertical Position" library="SeleniumLibrary">
+<var>${y_cart}</var>
+<arg>locator=//*[@id="shopping_cart_container"]/a</arg>
+<doc>Returns the vertical position of the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:44.147" endtime="20231210 22:28:44.147"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>locator=//*[@id="shopping_cart_container"]/a</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:44.147" endtime="20231210 22:28:44.147"/>
+</kw>
+<kw name="Get Horizontal Position" library="SeleniumLibrary">
+<var>${x_checkout}</var>
+<arg>id=checkout</arg>
+<doc>Returns the horizontal position of the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:44.147" endtime="20231210 22:28:44.147"/>
+</kw>
+<kw name="Get Vertical Position" library="SeleniumLibrary">
+<var>${y_checkout}</var>
+<arg>id=checkout</arg>
+<doc>Returns the vertical position of the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:44.147" endtime="20231210 22:28:44.147"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${x_cart}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:44.147" endtime="20231210 22:28:44.147"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${y_cart}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:44.147" endtime="20231210 22:28:44.147"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${x_checkout}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:44.147" endtime="20231210 22:28:44.147"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${y_checkout}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:44.147" endtime="20231210 22:28:44.147"/>
+</kw>
+<status status="NOT RUN" starttime="20231210 22:28:44.146" endtime="20231210 22:28:44.147"/>
+</branch>
+<branch type="ELSE IF" condition="${comparacao2} == ${True}">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id=login-button</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:44.148" endtime="20231210 22:28:44.148"/>
+</kw>
+<kw name="Page Should Contain" library="SeleniumLibrary">
+<arg>Epic sadface: Sorry, this user has been locked out.</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:44.148" endtime="20231210 22:28:44.148"/>
+</kw>
+<status status="NOT RUN" starttime="20231210 22:28:44.147" endtime="20231210 22:28:44.148"/>
+</branch>
+<branch type="ELSE IF" condition="${comparacao3} == ${True}">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id=login-button</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:44.148" endtime="20231210 22:28:44.148"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id=add-to-cart-sauce-labs-backpack</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:44.148" endtime="20231210 22:28:44.148"/>
+</kw>
+<kw name="Page Should Contain Element" library="SeleniumLibrary">
+<arg>id=remove-sauce-labs-backpack</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:44.148" endtime="20231210 22:28:44.148"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id=remove-sauce-labs-backpack</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:44.149" endtime="20231210 22:28:44.149"/>
+</kw>
+<kw name="Page Should Contain Element" library="SeleniumLibrary">
+<arg>id=add-to-cart-sauce-labs-backpack</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:44.149" endtime="20231210 22:28:44.149"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id=add-to-cart-sauce-labs-bolt-t-shirt</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:44.149" endtime="20231210 22:28:44.149"/>
+</kw>
+<kw name="Page Should Contain Element" library="SeleniumLibrary">
+<arg>id=remove-sauce-labs-bolt-t-shirt</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:44.149" endtime="20231210 22:28:44.149"/>
+</kw>
+<status status="NOT RUN" starttime="20231210 22:28:44.148" endtime="20231210 22:28:44.149"/>
+</branch>
+<branch type="ELSE IF" condition="${comparacao4} == ${True}">
+<kw name="Get Time" library="BuiltIn">
+<var>${now}</var>
+<arg>format=yearmonthdayhourminsec</arg>
+<doc>Returns the given time in the requested format.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:44.149" endtime="20231210 22:28:44.149"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${now}</var>
+<arg>${now}[0]${now}[1]${now}[2]${now}[3]${now}[4]${now}[5]</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:44.149" endtime="20231210 22:28:44.149"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id=login-button</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:44.149" endtime="20231210 22:28:44.149"/>
+</kw>
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<arg>Products</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:44.150" endtime="20231210 22:28:44.150"/>
+</kw>
+<kw name="Get Time" library="BuiltIn">
+<var>${after}</var>
+<arg>format=yearmonthdayhourminsec</arg>
+<doc>Returns the given time in the requested format.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:44.150" endtime="20231210 22:28:44.150"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${after}</var>
+<arg>${after}[0]${after}[1]${after}[2]${after}[3]${after}[4]${after}[5]</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:44.150" endtime="20231210 22:28:44.150"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${duration}</var>
+<arg>${after} - ${now}</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:44.150" endtime="20231210 22:28:44.150"/>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<arg>${duration} &lt; 3</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:44.150" endtime="20231210 22:28:44.150"/>
+</kw>
+<status status="NOT RUN" starttime="20231210 22:28:44.149" endtime="20231210 22:28:44.150"/>
+</branch>
+<branch type="ELSE IF" condition="${comparacao5} == ${True}">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id=login-button</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:44.150" endtime="20231210 22:28:44.150"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id=add-to-cart-sauce-labs-backpack</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:44.150" endtime="20231210 22:28:44.150"/>
+</kw>
+<kw name="Page Should Contain Element" library="SeleniumLibrary">
+<arg>id=remove-sauce-labs-backpack</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:44.151" endtime="20231210 22:28:44.151"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id=add-to-cart-sauce-labs-bolt-t-shirt</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:44.151" endtime="20231210 22:28:44.151"/>
+</kw>
+<kw name="Page Should Contain Element" library="SeleniumLibrary">
+<arg>id=remove-sauce-labs-bolt-t-shirt</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:44.151" endtime="20231210 22:28:44.151"/>
+</kw>
+<status status="NOT RUN" starttime="20231210 22:28:44.150" endtime="20231210 22:28:44.151"/>
+</branch>
+<branch type="ELSE IF" condition="${comparacao6} == ${True}">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id=login-button</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20231210 22:28:44.152" level="INFO">Clicking element 'id=login-button'.</msg>
+<status status="PASS" starttime="20231210 22:28:44.151" endtime="20231210 22:28:44.413"/>
+</kw>
+<kw name="Get Horizontal Position" library="SeleniumLibrary">
+<var>${xx}</var>
+<arg>locator=//*[@id="shopping_cart_container"]/a</arg>
+<doc>Returns the horizontal position of the element identified by ``locator``.</doc>
+<msg timestamp="20231210 22:28:44.420" level="INFO">${xx} = 1017</msg>
+<status status="PASS" starttime="20231210 22:28:44.413" endtime="20231210 22:28:44.420"/>
+</kw>
+<kw name="Get Vertical Position" library="SeleniumLibrary">
+<var>${yy}</var>
+<arg>locator=//*[@id="shopping_cart_container"]/a</arg>
+<doc>Returns the vertical position of the element identified by ``locator``.</doc>
+<msg timestamp="20231210 22:28:44.427" level="INFO">${yy} = 39</msg>
+<status status="PASS" starttime="20231210 22:28:44.421" endtime="20231210 22:28:44.427"/>
+</kw>
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<arg>${xx}</arg>
+<arg>${x_cart}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<msg timestamp="20231210 22:28:44.427" level="FAIL">1017 != 1203</msg>
+<status status="FAIL" starttime="20231210 22:28:44.427" endtime="20231210 22:28:44.428"/>
+</kw>
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<arg>${yy}</arg>
+<arg>${y_cart}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:44.428" endtime="20231210 22:28:44.428"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>locator=//*[@id="shopping_cart_container"]/a</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:44.428" endtime="20231210 22:28:44.428"/>
+</kw>
+<kw name="Get Horizontal Position" library="SeleniumLibrary">
+<var>${xxx}</var>
+<arg>id=checkout</arg>
+<doc>Returns the horizontal position of the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:44.428" endtime="20231210 22:28:44.428"/>
+</kw>
+<kw name="Get Vertical Position" library="SeleniumLibrary">
+<var>${yyy}</var>
+<arg>id=checkout</arg>
+<doc>Returns the vertical position of the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:44.428" endtime="20231210 22:28:44.428"/>
+</kw>
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<arg>${xxx}</arg>
+<arg>${x_checkout}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:44.428" endtime="20231210 22:28:44.428"/>
+</kw>
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<arg>${yyy}</arg>
+<arg>${y_checkout}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="NOT RUN" starttime="20231210 22:28:44.428" endtime="20231210 22:28:44.429"/>
+</kw>
+<status status="FAIL" starttime="20231210 22:28:44.151" endtime="20231210 22:28:44.429"/>
+</branch>
+<status status="FAIL" starttime="20231210 22:28:44.146" endtime="20231210 22:28:44.429"/>
+</if>
+<status status="FAIL" starttime="20231210 22:28:43.968" endtime="20231210 22:28:44.429"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20231210 22:28:44.429" endtime="20231210 22:28:47.301"/>
+</kw>
+<status status="FAIL" starttime="20231210 22:28:37.103" endtime="20231210 22:28:47.301">1017 != 1203</status>
+</test>
+<doc>Esse arquivo contém validações para tela de login referente à Prova Técnica NTT Data</doc>
+<status status="FAIL" starttime="20231210 22:27:35.657" endtime="20231210 22:28:47.303"/>
+</suite>
+<status status="FAIL" starttime="20231210 22:27:09.008" endtime="20231210 22:28:47.306"/>
+</suite>
+<statistics>
+<total>
+<stat pass="4" fail="4" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="4" fail="4" skip="0" id="s1" name="Tests &amp; Testtemplate Login">Tests &amp; Testtemplate Login</stat>
+<stat pass="2" fail="0" skip="0" id="s1-s1" name="Tests">Tests &amp; Testtemplate Login.Tests</stat>
+<stat pass="2" fail="4" skip="0" id="s1-s2" name="Testtemplate Login">Tests &amp; Testtemplate Login.Testtemplate Login</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20231210 22:27:09.290" level="ERROR">Error in file 'C:\Users\User\Documents\QA\desafio_python\tests.robot' on line 4: Setting 'Suite Setup' is not allowed in resource file.</msg>
+<msg timestamp="20231210 22:27:09.292" level="ERROR">Error in file 'C:\Users\User\Documents\QA\desafio_python\tests.robot' on line 5: Setting 'Test Setup' is not allowed in resource file.</msg>
+<msg timestamp="20231210 22:27:09.293" level="ERROR">Error in file 'C:\Users\User\Documents\QA\desafio_python\tests.robot' on line 6: Setting 'Test teardown' is not allowed in resource file.</msg>
+<msg timestamp="20231210 22:27:09.293" level="ERROR">Error in file 'C:\Users\User\Documents\QA\desafio_python\base.robot' on line 8: Error in file 'C:\Users\User\Documents\QA\desafio_python\tests.robot' on line 8: Resource file with 'Test Cases' section is invalid.</msg>
+<msg timestamp="20231210 22:27:35.664" level="ERROR">Error in file 'C:\Users\User\Documents\QA\desafio_python\tests.robot' on line 4: Setting 'Suite Setup' is not allowed in resource file.</msg>
+<msg timestamp="20231210 22:27:35.666" level="ERROR">Error in file 'C:\Users\User\Documents\QA\desafio_python\tests.robot' on line 5: Setting 'Test Setup' is not allowed in resource file.</msg>
+<msg timestamp="20231210 22:27:35.667" level="ERROR">Error in file 'C:\Users\User\Documents\QA\desafio_python\tests.robot' on line 6: Setting 'Test teardown' is not allowed in resource file.</msg>
+<msg timestamp="20231210 22:27:35.668" level="ERROR">Error in file 'C:\Users\User\Documents\QA\desafio_python\base.robot' on line 8: Error in file 'C:\Users\User\Documents\QA\desafio_python\tests.robot' on line 8: Resource file with 'Test Cases' section is invalid.</msg>
+</errors>
+</robot>

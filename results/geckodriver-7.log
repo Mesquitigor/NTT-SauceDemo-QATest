@@ -1,0 +1,16 @@
+1702258106550	geckodriver	INFO	Listening on 127.0.0.1:57211
+1702258109595	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "57212" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\User\\AppData\\Local\\Temp\\rust_mozprofileQlxImO"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1702258109951	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1702258110097	Marionette	INFO	Listening on port 57219
+WebDriver BiDi listening on ws://127.0.0.1:57212
+Read port: 57219
+1702258110304	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+DevTools listening on ws://127.0.0.1:57212/devtools/browser/fc602eaf-f6c5-4307-bcaf-9811235d3b47
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://www.saucedemo.com."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://www.saucedemo.com."
+JavaScript error: https://www.saucedemo.com/static/js/main.9735b7ab.chunk.js, line 1: Error: Failed to add item to the cart.
+1702258114051	Marionette	INFO	Stopped listening on port 57219
+Dynamically enable window occlusion 1
